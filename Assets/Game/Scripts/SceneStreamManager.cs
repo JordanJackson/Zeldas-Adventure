@@ -93,7 +93,10 @@ public class SceneStreamManager : Singleton<SceneStreamManager>
         if (!neighbours) return;
         for (int i = 0; i < neighbours.sceneNames.Length; i++)
         {
-            Load(neighbours.sceneNames[i], LoadNeighbours, depth + 1);
+            if (!IsLoading(neighbours.sceneNames[i]))
+            {
+                Load(neighbours.sceneNames[i], LoadNeighbours, depth + 1);
+            }
         }
     }
 
@@ -119,6 +122,16 @@ public class SceneStreamManager : Singleton<SceneStreamManager>
     bool IsLoaded(string sceneName)
     {
         return loadedScenes.Contains(sceneName);
+    }
+
+    bool IsLoading(string sceneName)
+    {
+        return loadingScenes.Contains(sceneName);
+    }
+
+    bool IsNear(string sceneName)
+    {
+        return nearScenes.Contains(sceneName);
     }
 
     // loads scene
@@ -179,5 +192,11 @@ public class SceneStreamManager : Singleton<SceneStreamManager>
     public static void SetCurrentScene(string sceneName)
     {
         Instance.SetCurrent(sceneName);
+    }
+
+    public GameObject GetCurrentSceneRoot()
+    {
+        // consider cacheing currentSceneRoot
+        return GameObject.Find(currentSceneName);
     }
 }

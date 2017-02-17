@@ -12,7 +12,6 @@ public class SceneTrigger : MonoBehaviour
     {
         if (other.GetComponent<Player>() != null)
         {
-            Debug.Log("Player entered");
             UpdateCurrentScene();
         }
     }
