@@ -4,23 +4,39 @@ using System.Collections.Generic;
 
 public class CollectionData : Data {
 
-	public List<GameObject>	data;
+    public string collectionName;
 
-	public GameObject GetDataItem(int i)
-	{
-		GameObject rval = null;
-		if (i < data.Count)
-			rval = data [i];
+	public List<IsInventoryItem> items;
 
-		return rval;
-	}
-	public void Insert(GameObject go)
+	public IsInventoryItem GetItemByIndex(int index)
 	{
-		data.Add(go);
+        IsInventoryItem targetItem = null;
+		if (index < items.Count)
+            targetItem = items[index];
+
+		return targetItem;
 	}
 
-	public void Remove(GameObject go)
+    public IsInventoryItem GetItemByName(string itemName)
+    {
+       for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].itemName == itemName)
+            {
+                return items[i];
+            }
+        }
+
+        return null;
+    }
+
+    public void Insert(IsInventoryItem item)
 	{
-		//todo - dhdh
+        items.Add(item);
+	}
+
+	public void Remove(IsInventoryItem item)
+	{
+        items.Remove(item);
 	}
 }

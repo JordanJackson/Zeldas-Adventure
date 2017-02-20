@@ -1,30 +1,40 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-public class isInventorySlot : MonoBehaviour {
+public class IsInventorySlot : Mixin
+{
 
-	public GameObject obj; //  object back prt to collection
+    public string itemName;
 
-	public void OnMouseDown()
-	{
-		isUsable iu = obj.GetComponent<isUsable> ();
-		if (iu != null)
-		{
-			// fix disabled object sendmessage failure! 
-			if (obj != null)
-				obj.SetActive (true);
+    public IsInventoryItem item;
 
-			iu.Use ();
-		}
-	}
+    public IsCollectionView owner;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public void Initialize(IsCollectionView owner)
+    {
+        this.owner = owner;
+        item = owner.GetCollectionData().GetItemByName(itemName);
+        // TODO: Mouse click system will need to be replaced by controller based item selection
+        EventTrigger trigger = this.gameObject.AddComponent<EventTrigger>();
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        entry.eventID = EventTriggerType.PointerClick;
+        entry.callback.AddListener((eventData) => { OnMouseDown(); });
+        trigger.triggers.Add(entry);
+
+        // create thumbnail image
+    }
+
+    public virtual void UpdateInventorySlot()
+    {
+        // update thumbnail image
+    }
+
+    public void OnMouseDown()
+    {
+        if (item)
+            item.Select();
+    }
 }

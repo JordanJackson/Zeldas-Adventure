@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    public float speed = 2.0f;
+    public float speed = 5.0f;
 
     Vector2 inputs;
 
@@ -18,8 +18,38 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
+        RecalculateAttributes();
         GetInput();
         ProcessMovement();
+    }
+
+    void RecalculateAttributes()
+    {
+        IntData[] intDatas = this.GetComponents<IntData>();
+        for (int i = 0; i < intDatas.Length; i++)
+        {
+            switch (intDatas[i].Name)
+            {
+                default:
+                    break;
+            }
+        }
+
+        FloatData[] floatDatas = this.GetComponents<FloatData>();
+        for (int i = 0; i < floatDatas.Length; i++)
+        {
+            switch (floatDatas[i].Name)
+            {
+                case "Speed":
+                    speed = floatDatas[i].Data();
+                    break;
+                case "Size":
+                    this.transform.localScale = new Vector3(floatDatas[i].Data(), floatDatas[i].Data(), floatDatas[i].Data());
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     void GetInput()

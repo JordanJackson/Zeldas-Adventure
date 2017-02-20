@@ -24,7 +24,7 @@ public class IsConsumable : Mixin {
 				if (itemId.Name == recipId.Name)
 				{
 					// apply delta
-					recipId.data += itemId.data;
+					recipId.UpdateData(itemId.Data());
 				}
 			}
 		}

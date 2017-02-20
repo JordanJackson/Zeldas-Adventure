@@ -14,22 +14,19 @@ public class IsCollectible : Mixin {
 		{
 			// insert
 			if (cd.Name == Name) {
-				cd.Insert (this.gameObject);
+                IsInventoryItem item = this.GetComponent<IsInventoryItem>();
 
-				// do some sort of disable, so we don't collect it again
-				this.gameObject.SetActive (false);
-			}
+                if (item)
+                {
+                    cd.Insert(item);
+
+                    // do some sort of disable, so we don't collect it again
+                    //this.gameObject.SetActive (false);
+                }
+                break;
+            }
 		}
 
 	}
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

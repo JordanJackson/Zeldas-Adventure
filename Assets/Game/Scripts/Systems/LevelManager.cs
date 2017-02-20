@@ -17,8 +17,6 @@ public class LevelManager : Singleton<LevelManager>
     {
         SceneManager.sceneLoaded += OnLevelLoaded;
         SceneManager.sceneUnloaded += OnLevelUnloaded;
-
-
     }
 
     public void OnLevelLoaded(Scene scene, LoadSceneMode lsm)

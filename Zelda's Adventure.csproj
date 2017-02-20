@@ -93,11 +93,18 @@
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Hero.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\Data\CollectionData.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\Data\Data.cs" />
+    <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\Data\FloatData.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\Data\IntData.cs" />
+    <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\Data\InventoryData.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\Debugable.cs" />
+    <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsCollectionView.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsCollideable.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsConsumable.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsConsumer.cs" />
+    <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsInventoryItem.cs" />
+    <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsInventorySlot.cs" />
+    <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsInventoryStack.cs" />
+    <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsInventoryView.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsPickup.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsPowerUp.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsTouchable.cs" />
@@ -109,8 +116,6 @@
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\isColorChanger.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\isEquipSlot.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\isEquipable.cs" />
-    <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\isInventorySlot.cs" />
-    <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\isInventoryView.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\isLevitator.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\isUsable.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Responses\AnimatorSetTriggerResponse.cs" />
@@ -125,7 +130,7 @@
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Responses\TranslateResponse.cs" />
     <Compile Include="Assets\Game\Scripts\CharacterController.cs" />
     <Compile Include="Assets\Game\Scripts\Player.cs" />
-    <Compile Include="Assets\Game\Scripts\Room.cs" />
+    <Compile Include="Assets\Game\Scripts\RoomCamera.cs" />
     <Compile Include="Assets\Game\Scripts\SceneNeighbours.cs" />
     <Compile Include="Assets\Game\Scripts\SceneSetStart.cs" />
     <Compile Include="Assets\Game\Scripts\SceneStreamManager.cs" />
