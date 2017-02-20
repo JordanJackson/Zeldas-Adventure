@@ -4,70 +4,42 @@ using System.Collections;
 
 public class UIManager : Singleton<UIManager>
 {
-    public Image transitionPanel;
+    public GameObject player;
 
-    public Text scoreText;
-    public Text livesText;
+    public string healthID;
 
-    public Image gameOverPanel;
-    public Text gameOverScoreText;
+    public HeartDisplay heartDisplay;
 
-    // scene transition variables
-    float time = 0.0f;
-    public float transitionSpeed;
-    bool transition = false;
-    bool forward = true;
 
-    public void SceneTransition()
+    void Start()
     {
-        transition = true;
-    }
-
-    void Update()
-    {
-        if (transition)
+        player = FindObjectOfType<Player>().gameObject;
+        if (!heartDisplay)
         {
-            if (forward)
-            {
-                time += transitionSpeed * Time.deltaTime;
-                if (time >= 1.0f)
-                {
-                    forward = false;
-                }
-            }
-            else
-            {
-                time -= 2 * transitionSpeed * Time.deltaTime;
-                if (time <= 0.0f)
-                {
-                    forward = true;
-                    transition = false;
-                }
-            }
-            transitionPanel.color = Color.Lerp(new Color(0.1f, 0.1f, 0.1f, 0.0f), new Color(0.1f, 0.1f, 0.1f, 1.0f), time);
+            Debug.LogWarning("HeartDisplay GameObject not set.");
         }
     }
 
-    public void UpdateScoreText(int score)
+
+    void Update()
     {
-        scoreText.text = "Score: " + score;
+        UpdateHearts();
     }
 
-    public void UpdateLivesText(int lives)
+    void UpdateHearts()
     {
-        livesText.text = "Lives: " + lives;
-    }
+        int maxHealth;
+        int currentHealth;
 
-    public void ShowGameOverPanel(int score)
-    {
-        gameOverPanel.gameObject.SetActive(true);
-        gameOverScoreText.text = "Score: " + score;
-        transitionPanel.color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-    }
-
-    public void HideGameOverPanel()
-    {
-        gameOverPanel.gameObject.SetActive(false);
-        transitionPanel.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+        IntData[] data = player.GetComponentsInChildren<IntData>();
+        for (int i = 0; i < data.Length; i++)
+        {
+            if (data[i].Name == healthID)
+            {
+                maxHealth = data[i].Max();
+                currentHealth = data[i].Data();
+                heartDisplay.DrawHearts(currentHealth, maxHealth);
+            }
+        }
     }
 }

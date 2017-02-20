@@ -7,6 +7,9 @@ public class IsInventoryItem : Mixin
 
     public string itemName;
 
+    public int count;
+    public bool countable;
+
     public Sprite thumbnail;
 
     // base method to call when item selected in inventory view

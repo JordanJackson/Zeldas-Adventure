@@ -14,6 +14,16 @@ public class IntData : Data {
         return data;
     }
 
+    public int Max()
+    {
+        return maxValue;
+    }
+
+    public int Min()
+    {
+        return minValue;
+    }
+
     public void UpdateData(int delta)
     {
         data += delta;

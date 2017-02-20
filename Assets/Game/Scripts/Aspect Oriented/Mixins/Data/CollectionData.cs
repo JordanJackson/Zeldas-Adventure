@@ -19,6 +19,7 @@ public class CollectionData : Data {
 
     public IsInventoryItem GetItemByName(string itemName)
     {
+
        for (int i = 0; i < items.Count; i++)
         {
             if (items[i].itemName == itemName)

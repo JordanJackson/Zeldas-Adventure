@@ -22,7 +22,7 @@ public class GameManager : Singleton<GameManager>
             // gameover
             gameOver = true;
             // show UI
-            UIManager.Instance.ShowGameOverPanel(score);
+
         }
         if (gameOver)
         {
@@ -30,7 +30,7 @@ public class GameManager : Singleton<GameManager>
             {
                 gameOver = false;
                 // hide UI
-                UIManager.Instance.HideGameOverPanel();
+
                 score = 0;
                 lives = 3;
                 LevelManager.Instance.SetNextLevel("Level1");
@@ -41,13 +41,12 @@ public class GameManager : Singleton<GameManager>
     public void UpdateScore(int delta)
     {
         score += delta;
-        UIManager.Instance.UpdateScoreText(score);
+
         
     }
 
     public void UpdateLives(int delta)
     {
         lives += delta;
-        UIManager.Instance.UpdateLivesText(lives);
     }
 }

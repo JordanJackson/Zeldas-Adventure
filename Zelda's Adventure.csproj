@@ -101,10 +101,11 @@
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsCollideable.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsConsumable.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsConsumer.cs" />
+    <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsCurrency.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsInventoryItem.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsInventorySlot.cs" />
-    <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsInventoryStack.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsInventoryView.cs" />
+    <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsKey.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsPickup.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsPowerUp.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Mixins\IsTouchable.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Responses\SendMessageResponse.cs" />
     <Compile Include="Assets\Game\Scripts\Aspect Oriented\Responses\TranslateResponse.cs" />
     <Compile Include="Assets\Game\Scripts\CharacterController.cs" />
+    <Compile Include="Assets\Game\Scripts\HeartDisplay.cs" />
     <Compile Include="Assets\Game\Scripts\Player.cs" />
     <Compile Include="Assets\Game\Scripts\RoomCamera.cs" />
     <Compile Include="Assets\Game\Scripts\SceneNeighbours.cs" />
