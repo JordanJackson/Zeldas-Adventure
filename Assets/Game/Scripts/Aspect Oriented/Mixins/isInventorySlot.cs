@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class IsInventorySlot : Mixin
 {
-
     public string itemName;
 
     public IsInventoryItem item;
@@ -16,11 +15,11 @@ public class IsInventorySlot : Mixin
 
     public int thumbHorizontalOffset;
     public int thumbVerticalOffset;
-    public float thumbScale;
+    public float thumbScale = 1;
 
     public int countHorizontalOffset;
     public int countVerticalOffset;
-    public int countScale;
+    public int countScale = 12;
 
     public Font countFont;
 

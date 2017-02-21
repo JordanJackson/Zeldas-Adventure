@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class isEquipable : Mixin {
+public class IsEquipable : Mixin {
 
-	public isEquipSlot.eSlotType slotType;
+	public IsEquipSlot.eSlotType slotType;
 
 	public void Equip()
 	{
-		// find the first open slot of my compatible type, and 
-		// equip me there!
+        // find the first open slot of my compatible type, and 
+        // equip me there!
 
-		isEquipSlot[] eqSlots = GetRecipient ().GetComponentsInChildren<isEquipSlot> ();
+        IsEquipSlot[] eqSlots = GetRecipient ().GetComponentsInChildren<IsEquipSlot> ();
 
-		foreach (isEquipSlot iseqs in eqSlots)
+		foreach (IsEquipSlot iseqs in eqSlots)
 		{
 			// slot type matches
 			if (iseqs.slotType == slotType)

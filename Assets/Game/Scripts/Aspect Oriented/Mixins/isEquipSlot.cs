@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class isEquipSlot : Mixin {
+public class IsEquipSlot : Mixin {
 
 	public enum eSlotType
 	{
-		eHand,
-		eHead,
-		eBoot,
-		eChest
+		rightHand,
+        leftHand,
+		head,
+		boot,
+		chest
 	};
 
 	public eSlotType slotType;
