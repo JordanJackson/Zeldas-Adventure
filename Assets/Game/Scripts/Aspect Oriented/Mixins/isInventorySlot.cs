@@ -13,15 +13,6 @@ public class IsInventorySlot : Mixin
 
     public IsCollectionView owner;
 
-    public int thumbHorizontalOffset;
-    public int thumbVerticalOffset;
-    public float thumbScale = 1;
-
-    public int countHorizontalOffset;
-    public int countVerticalOffset;
-    public int countScale = 12;
-
-    public Font countFont;
 
     GameObject thumbnail;
     GameObject count;
@@ -39,27 +30,37 @@ public class IsInventorySlot : Mixin
 
         if (item != null)
         {
-            if (item.thumbnail != null)
+            HasThumbnail hasThumbnail = item.GetComponent<HasThumbnail>();
+            if (hasThumbnail != null)
             {
                 // create thumbnail image
                 thumbnail = new GameObject();
                 thumbnail.transform.SetParent(this.transform);
                 Image image = thumbnail.AddComponent<Image>();
-                thumbnail.GetComponent<RectTransform>().localPosition = new Vector3(thumbHorizontalOffset, thumbVerticalOffset, 0.0f);
-                thumbnail.GetComponent<RectTransform>().localScale = new Vector3(thumbScale, thumbScale, 1.0f);
-                image.sprite = item.thumbnail;
+                RectTransform rect = thumbnail.GetComponent<RectTransform>();
+                rect.localPosition = new Vector3(hasThumbnail.thumbHorizontalOffset, hasThumbnail.thumbVerticalOffset, 0.0f);
+                rect.localScale = new Vector3(hasThumbnail.thumbScale, hasThumbnail.thumbScale, 1.0f);
+                image.sprite = hasThumbnail.image;
+                image.color = hasThumbnail.color;
             }
-            
-            if (item.countable)
+            IsCountable isCountable = item.GetComponent<IsCountable>();
+            if (isCountable)
             {
                 // create count object
                 count = new GameObject();
                 count.transform.SetParent(this.transform);
                 Text text = count.AddComponent<Text>();
-                count.GetComponent<RectTransform>().localPosition = new Vector3(countHorizontalOffset, countVerticalOffset, 0.0f);
-                text.text = item.count.ToString();
-                text.font = countFont;
-                text.fontSize = countScale;
+                count.GetComponent<RectTransform>().localPosition = new Vector3(isCountable.countHorizontalOffset, isCountable.countVerticalOffset, 0.0f);
+                if (isCountable.maxAmount >= 100)
+                {
+                    text.text = isCountable.currentAmount.ToString("000");
+                }
+                else
+                {
+                    text.text = isCountable.currentAmount.ToString("00");
+                }
+                text.font = isCountable.countFont;
+                text.fontSize = isCountable.countScale;
                 text.alignment = TextAnchor.MiddleCenter;
             }
 
@@ -69,9 +70,67 @@ public class IsInventorySlot : Mixin
 
     public void UpdateInventorySlot()
     {
-        // update thumbnail image
+        if (item == null)
+        {
+            item = owner.GetCollectionData().GetItemByName(itemName);
+        }
 
-        // update count
+        if (item != null)
+        {
+            // update thumbnail image
+            if (thumbnail == null)
+            {
+                HasThumbnail hasThumbnail = item.GetComponent<HasThumbnail>();
+                if (hasThumbnail != null)
+                {
+                    // create thumbnail image
+                    thumbnail = new GameObject();
+                    thumbnail.transform.SetParent(this.transform);
+                    Image image = thumbnail.AddComponent<Image>();
+                    RectTransform rect = thumbnail.GetComponent<RectTransform>();
+                    rect.localPosition = new Vector3(hasThumbnail.thumbHorizontalOffset, hasThumbnail.thumbVerticalOffset, 0.0f);
+                    rect.localScale = new Vector3(hasThumbnail.thumbScale, hasThumbnail.thumbScale, 1.0f);
+                    image.sprite = hasThumbnail.image;
+                    image.color = hasThumbnail.color;
+                }
+            }
+
+            // update count
+            if (count == null)
+            {
+                IsCountable isCountable = item.GetComponent<IsCountable>();
+                if (isCountable)
+                {
+                    // create count object
+                    count = new GameObject();
+                    count.transform.SetParent(this.transform);
+                    Text text = count.AddComponent<Text>();
+                    count.GetComponent<RectTransform>().localPosition = new Vector3(isCountable.countHorizontalOffset, isCountable.countVerticalOffset, 0.0f);
+                    if (isCountable.maxAmount >= 100)
+                    {
+                        text.text = isCountable.currentAmount.ToString("000");
+                    }
+                    else
+                    {
+                        text.text = isCountable.currentAmount.ToString("00");
+                    }
+
+                    text.font = isCountable.countFont;
+                    text.fontSize = isCountable.countScale;
+                    text.alignment = TextAnchor.MiddleCenter;
+                    text.color = isCountable.countColor;
+                    count.AddComponent<Outline>();
+                }
+            }
+            else
+            {
+                IsCountable isCountable = item.GetComponent<IsCountable>();
+                if (isCountable)
+                {
+                    count.GetComponent<Text>().text = isCountable.currentAmount.ToString();
+                }
+            }
+        }
     }
 
     public void OnMouseDown()

@@ -2,17 +2,13 @@
 using System.Collections;
 using UnityEngine.Sprites;
 
-public class hasThumbnail : MonoBehaviour {
+public class HasThumbnail : MonoBehaviour {
 
-	public Sprite img;
+	public Sprite image;
+    public Color color = Color.white;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public int thumbHorizontalOffset;
+    public int thumbVerticalOffset;
+    public float thumbScale = 1;
+
 }

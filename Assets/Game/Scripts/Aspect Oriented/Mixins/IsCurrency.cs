@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IsCurrency : IsInventoryItem
+public class IsCurrency : Mixin
 {
 
-    public override void Select()
+    public void Select()
     {
-        base.Select();
 
-        // do nothing with currency
     }
 }

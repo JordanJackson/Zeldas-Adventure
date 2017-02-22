@@ -29,7 +29,26 @@ public class IsConsumable : Mixin {
 			}
 		}
 
+        FloatData[] sourceBuffs = GetComponents<FloatData>();
+        FloatData[] destBuffs = GetRecipient().GetComponents<FloatData>();
+
+        foreach (FloatData sourceData in sourceBuffs)
+        {
+            foreach (FloatData destData in destBuffs)
+            {
+                if (sourceData.Name == destData.Name)
+                {
+                    destData.UpdateData(sourceData.Data());
+                }
+            }
+        }
+
 	}
+
+    public void ItemSelect()
+    {
+        Consume();
+    }
 
 	public void Consume()
 	{

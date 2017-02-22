@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IsKey : IsInventoryItem
+public class IsKey : Mixin
 {
 
-    public override void Select()
+    public void Select()
     {
-        base.Select();
 
-        // try to use on door?
-        // or do nothing and let use on door decrement key count
     }
 }

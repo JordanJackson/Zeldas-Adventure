@@ -8,7 +8,6 @@ public class InventoryData : Data
 
     public List<CollectionData> collections;
 
-
     public CollectionData GetCollectionByIndex(int index)
     {
         CollectionData targetCollection = null;

@@ -4,48 +4,45 @@ using System.Collections;
 public class IsEquipable : Mixin {
 
 	public IsEquipSlot.eSlotType slotType;
+    public bool autoEquip = true;
 
-	public void Equip()
+    IsEquipSlot equipSlot;
+
+    public void ItemSelect()
+    {
+        ToggleEquip();
+    }
+
+	public void AttachToSlot(GameObject newParent)
 	{
-        // find the first open slot of my compatible type, and 
-        // equip me there!
+        // find appropriate equipment slot and attach to it
+        IsEquipSlot[] equipSlots = newParent.GetComponentsInChildren<IsEquipSlot>();
 
-        IsEquipSlot[] eqSlots = GetRecipient ().GetComponentsInChildren<IsEquipSlot> ();
+        for (int i = 0; i < equipSlots.Length; i++)
+        {
+            if (equipSlots[i].slotType == this.slotType)
+            {
+                this.transform.SetParent(equipSlots[i].transform);
+                this.transform.localPosition = Vector3.zero;
+                this.transform.localRotation = Quaternion.identity;
+                equipSlot = equipSlots[i];
+                equipSlot.AddEquipment(this);
 
-		foreach (IsEquipSlot iseqs in eqSlots)
-		{
-			// slot type matches
-			if (iseqs.slotType == slotType)
-			{
-				// slot is empty
-				if (iseqs.obj == null)
-				{
-					// insert it!
-					this.transform.parent = iseqs.transform;
+                if (autoEquip)
+                {
+                    equipSlot.TryEquip(this);
+                }
 
-					this.transform.localPosition = Vector3.zero;
-
-					// make rb enert... ug...todo
-					Rigidbody rb = this.gameObject.GetComponent <Rigidbody> ();
-
-					if (rb != null) {
-						rb.isKinematic = true;
-					}
-					iseqs.obj = this.gameObject; //api!
-					break;
-				}
-			}
-		}
-
+                break;
+            }
+        }
 	}
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    void ToggleEquip()
+    {
+        if (equipSlot != null)
+        {
+            equipSlot.Equip(this);
+        }
+    }
 }

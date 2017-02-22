@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class IsPickup : IsTouchable 
+public class IsPickup : Mixin 
 {
+    public string pickupCallBack;
+
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.GetComponent<IsConsumer>() != null)
+        if (collider.gameObject.GetComponent<IsCollector>() != null)
         {
+
             GameObject touched = collider.gameObject;
 
             Mixin[] mixins = GetComponents<Mixin>();
@@ -17,8 +20,10 @@ public class IsPickup : IsTouchable
                 m.SetRecipient(touched);
             }
 
-            if (OnTouchCB != "")
-                SendMessage(OnTouchCB);
+            if (pickupCallBack != "")
+                SendMessage(pickupCallBack);
+
+            Destroy(this);
         }
         
     }
