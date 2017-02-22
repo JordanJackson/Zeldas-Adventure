@@ -33,11 +33,12 @@ public class CollectionData : Data {
 
     public void Insert(IsInventoryItem item)
 	{
+        IsCountable countable;
         for (int i = 0; i < items.Count; i++)
         {
             if (items[i].itemName == item.itemName)
             {
-                IsCountable countable = item.GetComponent<IsCountable>();
+                countable = item.GetComponent<IsCountable>();
                 if (countable)
                 {
                     items[i].GetComponent<IsCountable>().ChangeAmount(countable.value);
@@ -48,8 +49,14 @@ public class CollectionData : Data {
             }
         }
         // else just add new item
+        countable = item.GetComponent<IsCountable>();
+        if (countable)
+        {
+            countable.currentAmount += countable.value;
+        }
         items.Add(item);
-	}
+
+    }
 
 	public void Remove(IsInventoryItem item)
 	{

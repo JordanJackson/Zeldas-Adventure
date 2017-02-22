@@ -55,6 +55,12 @@ public class IsConsumable : Mixin {
         // 1) apply buffs
         ApplyBuffs();
 
+        IsCountable isCountable = GetComponent<IsCountable>();
+        if (isCountable)
+        {
+            isCountable.ChangeAmount(-1);
+        }
+
         // 2) self destruct
         Destroy(this.gameObject);
 	}

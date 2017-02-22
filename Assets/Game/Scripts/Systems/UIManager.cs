@@ -10,6 +10,8 @@ public class UIManager : Singleton<UIManager>
 
     public HeartDisplay heartDisplay;
 
+    public GameObject pauseMenuScreen;
+
 
     void Start()
     {
@@ -23,7 +25,21 @@ public class UIManager : Singleton<UIManager>
 
     void Update()
     {
+        // every state
         UpdateHearts();
+        switch (GameManager.Instance.currentState)
+        {
+            // paused
+            case GameManager.GameState.PAUSED:
+                DisplayInventoryUI(true);
+                break;
+            case GameManager.GameState.PLAYING:
+                DisplayInventoryUI(false);
+                break;
+            default:
+                break;
+        }
+
     }
 
     void UpdateHearts()
@@ -40,6 +56,14 @@ public class UIManager : Singleton<UIManager>
                 currentHealth = data[i].Data();
                 heartDisplay.DrawHearts(currentHealth, maxHealth);
             }
+        }
+    }
+
+    void DisplayInventoryUI(bool active)
+    {
+        if (pauseMenuScreen != null)
+        {
+            pauseMenuScreen.SetActive(active);
         }
     }
 }

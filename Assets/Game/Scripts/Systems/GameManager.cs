@@ -3,50 +3,37 @@ using System.Collections;
 
 public class GameManager : Singleton<GameManager>
 {
+    public enum GameState
+    {
+        PLAYING,
+        PAUSED,
+        GAME_OVER
+    }
 
-    public int score = 0;
-    public int lives = 3;
-
-    bool gameOver = false;
+    public GameState currentState;
 
     void Start()
     {
-        // play intro?
-        // set up first level
+
     }
 
     void Update()
     {
-        if (lives <= 0)
+        if (Input.GetButtonDown("Start"))
         {
-            // gameover
-            gameOver = true;
-            // show UI
-
-        }
-        if (gameOver)
-        {
-            if (Input.GetButtonDown("Jump") || Input.GetButtonDown("Fire1"))
-            {
-                gameOver = false;
-                // hide UI
-
-                score = 0;
-                lives = 3;
-                LevelManager.Instance.SetNextLevel("Level1");
-            }
+            TogglePauseMenu();
         }
     }
 
-    public void UpdateScore(int delta)
+    void TogglePauseMenu()
     {
-        score += delta;
-
-        
-    }
-
-    public void UpdateLives(int delta)
-    {
-        lives += delta;
+        if (currentState == GameState.PLAYING)
+        {
+            currentState = GameState.PAUSED;
+        }
+        else if (currentState == GameState.PAUSED)
+        {
+            currentState = GameState.PLAYING;
+        }
     }
 }

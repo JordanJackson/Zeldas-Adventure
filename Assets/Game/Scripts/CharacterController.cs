@@ -18,9 +18,17 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
-        RecalculateAttributes();
-        GetInput();
-        ProcessMovement();
+        switch (GameManager.Instance.currentState)
+        {
+            case GameManager.GameState.PLAYING:
+                RecalculateAttributes();
+                GetInput();
+                ProcessMovement();
+                break;
+            default:
+                break;
+        }
+
     }
 
     void RecalculateAttributes()
