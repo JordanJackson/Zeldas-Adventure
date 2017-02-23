@@ -21,12 +21,6 @@ public class IsInventorySlot : Mixin
     {
         this.owner = owner;
         item = owner.GetCollectionData().GetItemByName(itemName);
-        // TODO: Mouse click system will need to be replaced by controller based item selection
-        EventTrigger trigger = this.gameObject.AddComponent<EventTrigger>();
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.PointerClick;
-        entry.callback.AddListener((eventData) => { OnMouseDown(); });
-        trigger.triggers.Add(entry);
 
         if (item != null)
         {

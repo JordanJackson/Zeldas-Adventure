@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zelda's Adventure", "Zelda's Adventure.csproj", "{C8057841-1E51-CD10-64DB-A27354A40F68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zelda's Adventure.Editor", "Zelda's Adventure.Editor.csproj", "{FCCDE836-4172-C915-FB68-E18447B1F06A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{C8057841-1E51-CD10-64DB-A27354A40F68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8057841-1E51-CD10-64DB-A27354A40F68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8057841-1E51-CD10-64DB-A27354A40F68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCCDE836-4172-C915-FB68-E18447B1F06A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCCDE836-4172-C915-FB68-E18447B1F06A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCCDE836-4172-C915-FB68-E18447B1F06A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCCDE836-4172-C915-FB68-E18447B1F06A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

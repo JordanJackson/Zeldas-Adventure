@@ -16,7 +16,7 @@ public class IsInventoryView : Mixin
     public int gridWidth = 2;
     public int gridHeight = 2;
 
-    void OnEnable()
+    void Awake()
     {
         Initialize();
     }

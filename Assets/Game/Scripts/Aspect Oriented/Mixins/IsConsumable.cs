@@ -3,9 +3,6 @@ using System.Collections;
 
 public class IsConsumable : Mixin {
 
-	// to consume something means to
-	//  1) apply +/- buffs to any attributes (we dont have any yet)
-	//  2) self destruct
 
 	public void ApplyBuffs()
 	{
