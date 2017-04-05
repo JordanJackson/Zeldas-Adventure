@@ -1,0 +1,88 @@
+ManifestFileVersion: 0
+CRC: 1837974503
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b37d8f16d20c3af86e1662c1e3e654f2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: aca6ec993990f9ba20ed5b88309b0ef0
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: ff268870f86fa2c458ba6773c8958573, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: eaed5311be660964db81b5efe43ba94f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 99bb06524a7bd9641810f0b7a1627ec2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8add0a9223291d843a8c7f52c540ec93, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b993f1a3ff70e4f4e9d2107a4b498980, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 96caadc4671b55545b7d88c310f322f8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 02b0df458d5796d4982fa625ede0b746, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2dc7a3553c503c94088a9d391947c16e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0c081e06922dec444a243aec3131c1dc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: aa4a5c67732a5624383c01ad8bb92834, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9ff8af68552e8c5489326d4e6ece0210, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3c0b4ba9b3f18104cb3326994a6d30e9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1ca3eb6b53cd9644c870cded4bfaebc2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 06c9fbdb0717ead4daa5990311299d03, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f9e817fba96b37b45a589633741ae939, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e6bddffb69ded874abe47af21eb0543e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 912dce3c0e285224794f1623082c370c, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Game/Models/Maria/Maria_J_J_Ong.fbx
+- Assets/Game/Prefabs/Player2.prefab
+- Assets/Game/Prefabs/Player.prefab
+Dependencies: []

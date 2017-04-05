@@ -1,0 +1,14 @@
+ManifestFileVersion: 0
+CRC: 3886333798
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e03c30d8f13f2a7edb3412cc5a817be2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 31d6cfe0d16ae931b73c59d7e0c089c0
+HashAppended: 0
+ClassTypes: []
+Assets:
+- Assets/Game/Scenes/PromoScenes/Level01.unity
+Dependencies: []

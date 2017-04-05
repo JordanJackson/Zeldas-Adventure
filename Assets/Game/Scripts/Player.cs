@@ -18,6 +18,14 @@ public class Player : MonoBehaviour
                 break;
             }
         }
+
+        // wake all InventoryViews
+        IsInventoryView[] inventoryViews = FindObjectsOfType<IsInventoryView>();
+        foreach (IsInventoryView iV in inventoryViews)
+        {
+            iV.gameObject.SetActive(true);
+            iV.enabled = true;
+        }
     }
 
 	void Update()

@@ -1,0 +1,59 @@
+ManifestFileVersion: 0
+CRC: 3577060784
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: heroes
+      Dependencies: {}
+    Info_1:
+      Name: scene-bundle
+      Dependencies:
+        Dependency_0: material-bundle
+    Info_2:
+      Name: variants/myassets.hd
+      Dependencies: {}
+    Info_3:
+      Name: variants/variant-scene
+      Dependencies:
+        Dependency_0: variants/myassets.hd
+    Info_4:
+      Name: variants/myassets.sd
+      Dependencies: {}
+    Info_5:
+      Name: tanks-scene-bundle
+      Dependencies:
+        Dependency_0: tanks-albedo.normal-hd
+    Info_6:
+      Name: tanks-albedo.desert-hd
+      Dependencies: {}
+    Info_7:
+      Name: tanks-albedo.normal-sd
+      Dependencies: {}
+    Info_8:
+      Name: tanks-albedo.normal-hd
+      Dependencies: {}
+    Info_9:
+      Name: tanks-albedo.desert-sd
+      Dependencies: {}
+    Info_10:
+      Name: banner.english
+      Dependencies: {}
+    Info_11:
+      Name: banner.danish
+      Dependencies: {}
+    Info_12:
+      Name: cube-bundle
+      Dependencies:
+        Dependency_0: material-bundle
+    Info_13:
+      Name: material-bundle
+      Dependencies: {}
+    Info_14:
+      Name: promo
+      Dependencies: {}
+    Info_15:
+      Name: christmas
+      Dependencies: {}
+    Info_16:
+      Name: bundle-manifest
+      Dependencies: {}

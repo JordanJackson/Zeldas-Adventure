@@ -1,0 +1,15 @@
+ManifestFileVersion: 0
+CRC: 2832328704
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a07d1fa8bcb0c2ad9a998b935bd02550
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 31d6cfe0d16ae931b73c59d7e0c089c0
+HashAppended: 0
+ClassTypes: []
+Assets:
+- Assets/AssetBundleSample/SampleAssets/Tanks/Scenes/TanksExample.unity
+Dependencies:
+- C:/Users/jackjord/Documents/GitHub/Zeldas-Adventure/AssetBundles/Windows/tanks-albedo.normal-hd

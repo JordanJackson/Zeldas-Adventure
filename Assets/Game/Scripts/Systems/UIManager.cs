@@ -21,7 +21,12 @@ public class UIManager : Singleton<UIManager>
 
     void Start()
     {
-        player = FindObjectOfType<Player>().gameObject;
+        Player p = FindObjectOfType<Player>();
+        if (p)
+        {
+            player = p.gameObject;
+        }
+
         if (!heartDisplay)
         {
             Debug.LogWarning("HeartDisplay GameObject not set.");
@@ -31,22 +36,32 @@ public class UIManager : Singleton<UIManager>
 
     void Update()
     {
-        // every state
-        UpdateHearts();
-        switch (GameManager.Instance.currentState)
+        if (player == null)
         {
-            // paused
-            case GameManager.GameState.PAUSED:
-                DisplayInventoryUI(true);
-                HandleUIInput();
-                break;
-            case GameManager.GameState.PLAYING:
-                DisplayInventoryUI(false);
-                break;
-            default:
-                break;
+            Player p = FindObjectOfType<Player>();
+            if (p)
+            {
+                player = p.gameObject;
+            }
         }
-
+        else
+        {
+            // every state
+            UpdateHearts();
+            switch (GameManager.Instance.currentState)
+            {
+                // paused
+                case GameManager.GameState.PAUSED:
+                    DisplayInventoryUI(true);
+                    HandleUIInput();
+                    break;
+                case GameManager.GameState.PLAYING:
+                    DisplayInventoryUI(false);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     void UpdateHearts()

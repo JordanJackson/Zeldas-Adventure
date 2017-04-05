@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class SceneStreamManager : Singleton<SceneStreamManager>
 {
+    List<AssetBundle> levelBundles;
+
+
+    public string[] promoBundleNames;
+
     public int neighbourLoadDepth = 1;
 
     string currentSceneName;
@@ -29,6 +35,18 @@ public class SceneStreamManager : Singleton<SceneStreamManager>
     void Awake()
     {
         Object.DontDestroyOnLoad(this.gameObject);
+    }
+
+    IEnumerator Start()
+    {
+        levelBundles = new List<AssetBundle>();
+        for (int i = 0; i < promoBundleNames.Length; i++)
+        {
+            AssetBundleCreateRequest bundleRequest = AssetBundle.LoadFromFileAsync(Path.Combine(Application.streamingAssetsPath, "AssetBundles/Windows/" + promoBundleNames[i]));
+            yield return bundleRequest;
+            Debug.Log(promoBundleNames[i] + " bundle loaded");
+            levelBundles.Add(bundleRequest.assetBundle);
+        }
     }
 
     public void SetCurrent(string sceneName)
@@ -154,10 +172,30 @@ public class SceneStreamManager : Singleton<SceneStreamManager>
 
     IEnumerator LoadAdditiveAsync(string sceneName, LoadHandler loadHandler, int depth)
     {
-        AsyncOperation asyncOp = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        onLoading.Invoke(sceneName, asyncOp);
-        yield return asyncOp;
-        FinishLoad(sceneName, loadHandler, depth);
+        if (levelBundles != null && levelBundles.Count > 0)
+        {
+            foreach (AssetBundle bundle in levelBundles)
+            {
+                if (bundle.Contains(sceneName))
+                {
+                    Debug.Log(bundle.name + " bundle contains scene: " + sceneName);
+                    GetComponent<LoadScenes>().LoadLevelAsync(sceneName, true);
+                    yield return null;
+                    break;
+                }
+            }
+            AsyncOperation asyncOp = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            onLoading.Invoke(sceneName, asyncOp);
+            yield return asyncOp;
+            FinishLoad(sceneName, loadHandler, depth);
+        }
+        else
+        {
+            AsyncOperation asyncOp = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            onLoading.Invoke(sceneName, asyncOp);
+            yield return asyncOp;
+            FinishLoad(sceneName, loadHandler, depth);
+        }
     }
 
     void FinishLoad(string sceneName, LoadHandler loadHandler, int depth)

@@ -18,11 +18,20 @@ public class IsInventoryView : Mixin
 
     void Awake()
     {
-        Initialize();
+        //Initialize();
     }
 
     void Update()
     {
+        if (owner == null)
+        {
+            Player p = FindObjectOfType<Player>();
+            if (p != null)
+            {
+                owner = p.gameObject;
+            }
+            Initialize();
+        }
         UpdateInventoryView();
     }
 
@@ -44,18 +53,20 @@ public class IsInventoryView : Mixin
             {
                 Debug.LogWarning("InventoryData of name " + inventoryName + " not found for GameObject " + owner.name);
             }
+
+
+            IsCollectionView[] views = this.GetComponentsInChildren<IsCollectionView>();
+            for (int i = 0; i < views.Length; i++)
+            {
+                views[i].Initialize(this);
+                collectionViews.Add(views[i]);
+            }
         }
         else
         {
             Debug.LogWarning("InventoryView for " + inventoryName + " does not have owner GameObject set.");
         }
 
-        IsCollectionView[] views = this.GetComponentsInChildren<IsCollectionView>();
-        for (int i = 0; i < views.Length; i++)
-        {
-            views[i].Initialize(this);
-            collectionViews.Add(views[i]);
-        }
     }
 
     public InventoryData GetInventoryData()

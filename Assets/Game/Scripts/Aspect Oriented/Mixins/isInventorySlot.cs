@@ -64,9 +64,12 @@ public class IsInventorySlot : Mixin
 
     public void UpdateInventorySlot()
     {
-        if (item == null)
+        if (item == null && owner != null)
         {
-            item = owner.GetCollectionData().GetItemByName(itemName);
+            if (owner.GetCollectionData() != null)
+            {
+                item = owner.GetCollectionData().GetItemByName(itemName);
+            }
         }
 
         if (item != null)
